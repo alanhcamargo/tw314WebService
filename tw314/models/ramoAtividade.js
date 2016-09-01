@@ -8,7 +8,7 @@ module.exports = (sequelize, DataType) => {
 
         nome: {
             type: DataType.STRING(45),
-            allowNull: false
+            allowNull: false,
             validate {
                 notEmpty: true
             }
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataType) => {
         classMethods: {
             associate: (models) => {
                 RamoAtividade
-                    .belongTo(models.Status)
+                    .belongsTo(models.Status)
                     .hasMany(models.Servico)
             }
         }

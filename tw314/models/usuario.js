@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    const Servico = sequelize.define("Servico", {
+    const Usuario = sequelize.define("Usuario", {
         id: {
             type: DataType.INTEGER,
             primaryKey: true,
@@ -7,34 +7,42 @@ module.exports = (sequelize, DataType) => {
         },
 
         nome: {
-            type: DataType.STRING(45)
+            type: DataType.STRING(80),
             allowNull: false,
             validate {
                 notEmpty: true
             }
         },
 
-        descricao: {
-            type: DataType.STRING
+        email: {
+            type: DataType.STRING(100),
             allowNull: false,
             validate {
                 notEmpty: true
             }
         },
 
-        sigla: {
-            type: DataType.STRING(2)
+        data_ativacao: {
+            type: DataType.DATETIME,
+            defaultValue: DataType.NOW,
             allowNull: false,
             validate {
                 notEmpty: true
             }
+        },
+
+        data_inativacao: {
+            type: DataType.DATETIME
         }
     }, {
         classMethods: {
             associate: (models) => {
-                Servico.belongsTo(models.RamoAtividade)
+                Usuario
+                    .belongsTo(models.Status)
+                    .belongsTo(models.Empresa)
+                    .belongsTo(models.Perfil);
             }
         }
     })
-    return Servico;
+    return Usuario;
 };

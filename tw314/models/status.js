@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    cons Status = sequelize.define("Status", {
+    const Status = sequelize.define("Status", {
         id: {
             type: DataType.INTEGER,
             primaryKey: true,
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataType) => {
 
         nome: {
             type: DataType.STRING(45),
-            allowNull: false
+            allowNull: false,
             validate {
                 notEmpty: true
             }
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataType) => {
 
         descricao: {
             type: DataType.STRING,
-            allowNull: false
+            allowNull: false,
             validate {
                 notEmpty: true
             }
