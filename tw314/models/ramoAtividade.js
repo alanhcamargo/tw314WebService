@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    const RamoAtividade = sequilize.define("RamoAtividade", {
+    const RamoAtividade = sequelize.define("Ramo_Atividade", {
         id: {
             type: DataType.INTEGER,
             primaryKey: true,
