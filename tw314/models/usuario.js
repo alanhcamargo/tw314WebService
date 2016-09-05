@@ -9,7 +9,7 @@ module.exports = (sequelize, DataType) => {
         nome: {
             type: DataType.STRING(80),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -17,30 +17,30 @@ module.exports = (sequelize, DataType) => {
         email: {
             type: DataType.STRING(100),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
 
         data_ativacao: {
-            type: DataType.DATETIME,
+            type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
 
         data_inativacao: {
-            type: DataType.DATETIME
+            type: DataType.DATE
         }
     }, {
         classMethods: {
             associate: (models) => {
-                Usuario
-                    .belongsTo(models.Status)
-                    .belongsTo(models.Empresa)
-                    .belongsTo(models.Perfil);
+                Usuario.belongsTo(models.Status),
+                    Usuario.belongsTo(models.Empresa),
+                    Usuario.belongsTo(models.Perfil),
+                    Usuario.hasMany(models.Atendimento);
             }
         }
     })

@@ -7,22 +7,22 @@ module.exports = (sequelize, DataType) => {
         },
 
         data_abertura: {
-            type: DataType.DATETIME,
+            type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
 
         data_atualizacao: {
-            type: DataType.DATETIME
+            type: DataType.DATE
         },
 
         assunto: {
             type: DataType.STRING(255),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -30,22 +30,21 @@ module.exports = (sequelize, DataType) => {
         mensagem: {
             type: DataType.STRING,
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         }
     }, {
         classMethods: {
             associate: (models) => {
-                Chamado
-                    .belongsTo(models.Status)
-                    .belongsTo(models.Usuario, {
+                Chamado.belongsTo(models.Status),
+                    Chamado.belongsTo(models.Usuario, {
                         foreignKey: {
                             name: 'usuario_abertura',
                             allowNull: false
                         }
-                    })
-                    .belongsTo(models.Usuario, {
+                    }),
+                    Chamado.belongsTo(models.Usuario, {
                         foreignKey: {
                             name: 'usuario_resposta'
                         },

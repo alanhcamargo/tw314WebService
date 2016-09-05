@@ -1,11 +1,11 @@
 module.exports = (sequelize, DataType) => {
-    const RelacionamentoEmpresaServico = sequelize.define("RelacionamentoEmpresaServico", {
+    const RelacionamentoEmpresaServico = sequelize.define("RelacionamentoEmpresaServico", {}, {
         classMethods: {
             associate: (models) => {
-                RelacionamentoEmpresaServico
-                    .belongsTo(models.RamoAtividade)
-                    .belongsTo(models.Empresa);
+                RelacionamentoEmpresaServico.belongsTo(models.RamoAtividade),
+                    RelacionamentoEmpresaServico.belongsTo(models.Empresa);
             }
         }
     })
+    return RelacionamentoEmpresaServico;
 }

@@ -8,18 +8,18 @@ module.exports = (sequelize, DataType) => {
         },
 
         data_hora_inicio: {
-            type: DataType.DATETIME,
-            defaultValue: DataType.NOW,
+            type: DataType.DATE,
+            defaultValue: sequelize.NOW,
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
 
         data_hora_fim: {
-            type: DataType.DATETIME,
+            type: DataType.DATE,
             defaultValue: DataType.NOW,
-            validate {
+            validate: {
                 notEmpty: true
             }
         }
@@ -27,9 +27,8 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Atendimento
-                    .belongsTo(models.Usuario)
-                    .belongsTo(models.Status);
+                Atendimento.belongsTo(models.Usuario),
+                    Atendimento.belongsTo(models.Status);
             }
         }
     })

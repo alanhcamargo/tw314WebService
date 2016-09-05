@@ -9,7 +9,7 @@ module.exports = (sequelize, DataType) => {
         nome: {
             type: DataType.STRING(45),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -17,8 +17,16 @@ module.exports = (sequelize, DataType) => {
         descricao: {
             type: DataType.STRING,
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
+            }
+        }
+    }, {
+        classMethods: {
+            associate: (models) => {
+                Status.hasMany(models.Atendimento),
+                Status.hasMany(models.Empresa),
+                Status.hasMany(models.RamoAtividade);
             }
         }
     })

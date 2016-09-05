@@ -1,9 +1,9 @@
 {
-  "name": "application-name",
+  "name": "tw314-api",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "nodejs ./bin/www"
+    "start": "babel-node app.js"
   },
   "dependencies": {
     "express": "~4.0.0",

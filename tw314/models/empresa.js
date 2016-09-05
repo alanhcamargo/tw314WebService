@@ -9,7 +9,7 @@ module.exports = (sequelize, DataType) => {
         nome_fantasia: {
             type: DataType.STRING(80),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataType) => {
         razao_social: {
             type: DataType.STRING(80),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataType) => {
         nr_cnpj: {
             type: DataType.STRING(14),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataType) => {
         logradouro: {
             type: DataType.STRING(255),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -41,7 +41,7 @@ module.exports = (sequelize, DataType) => {
         nr_logradouro: {
             type: DataType.STRING(255),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -49,7 +49,7 @@ module.exports = (sequelize, DataType) => {
         cidade: {
             type: DataType.STRING(100),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -57,7 +57,7 @@ module.exports = (sequelize, DataType) => {
         bairro: {
             type: DataType.STRING(100),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -66,7 +66,7 @@ module.exports = (sequelize, DataType) => {
         uf: {
             type: DataType.STRING(2),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -74,7 +74,7 @@ module.exports = (sequelize, DataType) => {
         cep: {
             type: DataType.STRING(8),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -86,7 +86,7 @@ module.exports = (sequelize, DataType) => {
         email: {
             type: DataType.STRING(100),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -94,7 +94,7 @@ module.exports = (sequelize, DataType) => {
         nome_responsavel: {
             type: DataType.STRING(80),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -102,7 +102,7 @@ module.exports = (sequelize, DataType) => {
         cargo_responsavel: {
             type: DataType.STRING(45),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -110,38 +110,37 @@ module.exports = (sequelize, DataType) => {
         cpf_responsavel: {
             type: DataType.STRING(11),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
 
         data_abertura: {
-            type: DataType.DATETIME,
+            type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
 
         data_ativacao: {
-            type: DataType.DATETIME,
+            type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
 
         data_inativacao: {
-            type: DataType.DATETIME
+            type: DataType.DATE
         }
     }, {
         classMethods: {
-            associate: (models) => {
-                Empresa
-                    .belongsTo(models.Status)
-                    .belongsTo(models.RamoAtividade);
+            associate: models => {
+                Empresa.belongsTo(models.Status),
+                    Empresa.belongsTo(models.RamoAtividade);
             }
         }
     })

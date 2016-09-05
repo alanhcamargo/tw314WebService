@@ -9,8 +9,13 @@ module.exports = (sequelize, DataType) => {
         descricao: {
             type: DataType.STRING,
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
+            }
+        }
+    }, {
+        classMethods: {
+            associate: (models) => {
             }
         }
     })

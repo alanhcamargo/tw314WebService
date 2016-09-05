@@ -10,16 +10,16 @@ module.exports = (sequelize, DataType) => {
         nr_ticket: {
             type: DataType.INTEGER,
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
 
         data_hora_emissao: {
-            type: DataType.DATETIME,
+            type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         },
@@ -27,16 +27,15 @@ module.exports = (sequelize, DataType) => {
         cd_acesso: {
             type: DataType.STRING(8),
             allowNull: false,
-            validate {
+            validate: {
                 notEmpty: true
             }
         }
     }, {
         classMethods: {
             associate: (models) => {
-                Ticket
-                    .belongsTo(models.Empresa)
-                    .belongsTo(models.Servico);
+                Ticket.belongsTo(models.Empresa),
+                    Ticket.belongsTo(models.Servico);
             }
         }
     })
