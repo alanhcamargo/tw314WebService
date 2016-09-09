@@ -25,13 +25,13 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Chamado.belongsTo(models.Chamado, {
+                Comentario.belongsTo(models.CHA_CHAMADO, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Chamado.belongsTo(models.Usuario, {
+                    Comentario.belongsTo(models.USU_USUARIO, {
                         foreignKey: {
                             allowNull: false
                         }
@@ -40,5 +40,5 @@ module.exports = (sequelize, DataType) => {
             }
         }
     })
-    return Chamado;
+    return Comentario;
 };

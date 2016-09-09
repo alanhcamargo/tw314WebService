@@ -17,19 +17,19 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Atendimento.belongsTo(models.Ticket, {
+                Atendimento.belongsTo(models.TKC_TICKET, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Atendimento.belongsTo(models.Usuario, {
+                    Atendimento.belongsTo(models.USU_USUARIO, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Atendimento.belongsTo(models.Status, {
+                    Atendimento.belongsTo(models.STA_STATUS_ATENDIMENTO, {
                         foreignKey: {
                             allowNull: false
                         }

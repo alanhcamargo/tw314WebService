@@ -22,25 +22,25 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Ticket.belongsTo(models.Empresa, {
+                Ticket.belongsTo(models.EMP_EMPRESA, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Ticket.belongsTo(models.Servico, {
+                    Ticket.belongsTo(models.SVC_SERVICO, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Ticket.belongsTo(models.statusTicket, {
+                    Ticket.belongsTo(models.STT_STATUS_TICKET, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Ticket.hasMany(models.Atendimento);
+                    Ticket.hasMany(models.ATD_ATENDIMENTO);
             }
         }
     })

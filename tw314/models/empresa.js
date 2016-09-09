@@ -136,8 +136,8 @@ module.exports = (sequelize, DataType) => {
             type: DataType.DATE
         },
 
-        emp_statusAtivacao {
-            type: DataType.ENUM('Ativo', 'Inativo')
+        emp_statusAtivacao: {
+            type: DataType.ENUM('Ativo', 'Inativo'),
             allowNull: false,
             validate: {
                 notEmpty: true
@@ -146,9 +146,9 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: models => {
-                Empresa.belongsTo(models.RamoAtividade),
-                    Empresa.hasMany(models.RelacionamentoEmpresaServico),
-                    Empresa.hasMany(models.Usuario);
+                Empresa.belongsTo(models.RMA_RAMOATIVIDADE),
+                    Empresa.hasMany(models.ESV_RELACIONAMENTO_EMP_SVC),
+                    Empresa.hasMany(models.USU_USUARIO);
             }
         }
     })

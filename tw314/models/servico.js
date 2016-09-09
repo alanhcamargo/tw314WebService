@@ -30,8 +30,8 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        svc_statusAtivacao {
-            type: DataType.ENUM('Ativo', 'Inativo')
+        svc_statusAtivacao: {
+            type: DataType.ENUM('Ativo', 'Inativo'),
             allowNull: false,
             validate: {
                 notEmpty: true
@@ -40,8 +40,8 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Servico.belongsTo(models.RamoAtividade),
-                Servico.hasMany(models.RelacionamentoEmpresaServico);
+                Servico.belongsTo(models.RMA_RAMOATIVIDADE),
+                Servico.hasMany(models.ESV_RELACIONAMENTO_EMP_SVC);
             }
         }
     })

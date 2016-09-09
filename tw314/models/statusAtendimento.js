@@ -24,7 +24,7 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                StatusAtendimento.hasMany(models.Atendimento, {
+                StatusAtendimento.hasMany(models.ATD_ATENDIMENTO, {
                     foreignKey: {
                         allowNull: false
                     }

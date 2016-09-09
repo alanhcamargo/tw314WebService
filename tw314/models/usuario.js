@@ -39,8 +39,8 @@ module.exports = (sequelize, DataType) => {
             type: DataType.DATE
         },
 
-        usu_statusAtivacao {
-            type: DataType.ENUM('Ativo', 'Inativo')
+        usu_statusAtivacao: {
+            type: DataType.ENUM('Ativo', 'Inativo'),
             allowNull: false,
             validate: {
                 notEmpty: true
@@ -49,21 +49,21 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Usuario.belongsTo(models.Empresa, {
+                Usuario.belongsTo(models.EMP_EMPRESA, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Usuario.belongsTo(models.Perfil, {
+                    Usuario.belongsTo(models.PER_PERFIL, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Usuario.hasMany(models.Atendimento);
-                    Usuario.hasMany(models.Chamado);
-                    Usuario.hasMany(models.Comentario);
+                    Usuario.hasMany(models.ATD_ATENDIMENTO);
+                    Usuario.hasMany(models.CHA_CHAMADO);
+                    Usuario.hasMany(models.COM_COMENTARIO);
             }
         }
     })

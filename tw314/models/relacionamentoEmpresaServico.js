@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataType) => {
     const RelacionamentoEmpresaServico = sequelize.define("ESV_RELACIONAMENTO_EMP_SVC", {
-        esv_statusAtivacao {
-            type: DataType.ENUM('Ativo', 'Inativo')
+        esv_statusAtivacao: {
+            type: DataType.ENUM('Ativo', 'Inativo'),
             allowNull: false,
             validate: {
                 notEmpty: true
@@ -10,13 +10,13 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                RelacionamentoEmpresaServico.belongsTo(models.RamoAtividade, {
+                RelacionamentoEmpresaServico.belongsTo(models.RMA_RAMOATIVIDADE, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    RelacionamentoEmpresaServico.belongsTo(models.Empresa, {
+                    RelacionamentoEmpresaServico.belongsTo(models.EMP_EMPRESA, {
                         foreignKey: {
                             allowNull: false
                         }

@@ -41,18 +41,18 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Chamado.belongsTo(models.Usuario, {
+                Chamado.belongsTo(models.USU_USUARIO, {
                         foreignKey: {
                             allowNull: false
                         }
                     }),
-                    Chamado.belongsTo(models.StatusChamado, {
+                    Chamado.belongsTo(models.STC_STATUS_CHAMADO, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Chamado.hasMany(models.Comentario);
+                    Chamado.hasMany(models.COM_COMENTARIO);
             }
         }
     })

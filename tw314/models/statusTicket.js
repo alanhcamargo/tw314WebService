@@ -24,7 +24,7 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                StatusTicket.hasMany(models.Ticket);
+                StatusTicket.hasMany(models.TKC_TICKET);
             }
         }
     })

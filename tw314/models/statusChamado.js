@@ -24,7 +24,7 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                StatusChamado.hasMany(models.Chamado, {
+                StatusChamado.hasMany(models.CHA_CHAMADO, {
                     foreignKey: {
                         allowNull: false
                     },
