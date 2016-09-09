@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataType) => {
     const RelacionamentoEmpresaServico = sequelize.define("ESV_RELACIONAMENTO_EMP_SVC", {
-        esv_status_ativacao {
+        esv_statusAtivacao {
             type: DataType.ENUM('Ativo', 'Inativo')
             allowNull: false,
             validate: {

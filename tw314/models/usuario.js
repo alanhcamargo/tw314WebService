@@ -39,7 +39,7 @@ module.exports = (sequelize, DataType) => {
             type: DataType.DATE
         },
 
-        esv_status_ativacao {
+        usu_statusAtivacao {
             type: DataType.ENUM('Ativo', 'Inativo')
             allowNull: false,
             validate: {

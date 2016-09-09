@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const StatusTicket = sequelize.define("SST_STATUS_TICKET", {
-        sst_id: {
+    const StatusTicket = sequelize.define("STT_STATUS_TICKET", {
+        stt_id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        sst_nome: {
+        stt_nome: {
             type: DataType.STRING(45),
             allowNull: false,
             validate: {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        sst_descricao: {
+        stt_descricao: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
