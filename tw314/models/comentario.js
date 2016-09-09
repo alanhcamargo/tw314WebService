@@ -1,7 +1,22 @@
 module.exports = (sequelize, DataType) => {
-    const RelacionamentoEmpresaServico = sequelize.define("ESV_RELACIONAMENTO_EMP_SVC", {
-        esv_status_ativacao {
-            type: DataType.ENUM('Ativo', 'Inativo')
+    const Comentario = sequelize.define("COM_COMENTARIO", {
+        com_id: {
+            type: DataType.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+
+        com_dtcomentario: {
+            type: DataType.DATE,
+            defaultValue: DataType.NOW,
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
+
+        com_mensagem: {
+            type: DataType.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true
@@ -10,13 +25,13 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                RelacionamentoEmpresaServico.belongsTo(models.RamoAtividade, {
+                Chamado.belongsTo(models.Chamado, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    RelacionamentoEmpresaServico.belongsTo(models.Empresa, {
+                    Chamado.belongsTo(models.Usuario, {
                         foreignKey: {
                             allowNull: false
                         }
@@ -25,5 +40,5 @@ module.exports = (sequelize, DataType) => {
             }
         }
     })
-    return RelacionamentoEmpresaServico;
-}
+    return Chamado;
+};

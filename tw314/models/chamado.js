@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const Chamado = sequelize.define("Chamado", {
-        id: {
+    const Chamado = sequelize.define("CHA_CHAMADO", {
+        cha_id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        data_abertura: {
+        cha_dtabertura: {
             type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
@@ -15,19 +15,23 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        data_atualizacao: {
-            type: DataType.DATE
-        },
-
-        assunto: {
-            type: DataType.STRING(255),
+        cha_assunto: {
+            type: DataType.STRING(100),
             allowNull: false,
             validate: {
                 notEmpty: true
             }
         },
 
-        mensagem: {
+        cha_mensagem: {
+            type: DataType.STRING,
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
+
+        cha_anexo: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
@@ -37,19 +41,18 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Chamado.belongsTo(models.Status),
-                    Chamado.belongsTo(models.Usuario, {
+                Chamado.belongsTo(models.Usuario, {
                         foreignKey: {
-                            name: 'usuario_abertura',
                             allowNull: false
                         }
                     }),
-                    Chamado.belongsTo(models.Usuario, {
+                    Chamado.belongsTo(models.StatusChamado, {
                         foreignKey: {
-                            name: 'usuario_resposta'
-                        },
-                        onDelete: 'CASCADE'
-                    });
+                            allowNull: false
+                        }
+                        //onDelete: 'CASCADE'
+                    }),
+                    Chamado.hasMany(models.Comentario);
             }
         }
     })

@@ -3,10 +3,6 @@ module.exports = {
     username: "root",
     password: "root",
     params: {
-        dialect: "mysql",
-        storage: "tw314.mysql",
-        define: {
-            underscored: true
-        }
+        dialect: "mysql"
     }
 };

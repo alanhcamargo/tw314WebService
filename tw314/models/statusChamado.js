@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const Status = sequelize.define("Status", {
-        id: {
+    const StatusChamado = sequelize.define("STC_STATUS_CHAMADO", {
+        stc_id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        nome: {
+        stc_nome: {
             type: DataType.STRING(45),
             allowNull: false,
             validate: {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        descricao: {
+        stc_descricao: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
@@ -24,11 +24,14 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Status.hasMany(models.Atendimento),
-                Status.hasMany(models.Empresa),
-                Status.hasMany(models.RamoAtividade);
+                StatusChamado.hasMany(models.Chamado, {
+                    foreignKey: {
+                        allowNull: false
+                    },
+                    //onDelete: 'CASCADE'
+                });
             }
         }
     })
-    return Status;
+    return StatusChamado;
 };

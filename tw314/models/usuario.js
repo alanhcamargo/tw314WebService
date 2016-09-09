@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const Usuario = sequelize.define("Usuario", {
-        id: {
+    const Usuario = sequelize.define("USU_USUARIO", {
+        usu_id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        nome: {
+        usu_nome: {
             type: DataType.STRING(80),
             allowNull: false,
             validate: {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        email: {
+        usu_email: {
             type: DataType.STRING(100),
             allowNull: false,
             validate: {
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        data_ativacao: {
+        usu_dtAtivacao: {
             type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
@@ -31,16 +31,39 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        data_inativacao: {
+        usu_senha: {
+            type: DataType.TEXT
+        },
+
+        usu_dtInativacao: {
             type: DataType.DATE
+        },
+
+        esv_status_ativacao {
+            type: DataType.ENUM('Ativo', 'Inativo')
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
         }
     }, {
         classMethods: {
             associate: (models) => {
-                Usuario.belongsTo(models.Status),
-                    Usuario.belongsTo(models.Empresa),
-                    Usuario.belongsTo(models.Perfil),
+                Usuario.belongsTo(models.Empresa, {
+                        foreignKey: {
+                            allowNull: false
+                        }
+                        //onDelete: 'CASCADE'
+                    }),
+                    Usuario.belongsTo(models.Perfil, {
+                        foreignKey: {
+                            allowNull: false
+                        }
+                        //onDelete: 'CASCADE'
+                    }),
                     Usuario.hasMany(models.Atendimento);
+                    Usuario.hasMany(models.Chamado);
+                    Usuario.hasMany(models.Comentario);
             }
         }
     })
