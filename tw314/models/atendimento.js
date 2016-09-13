@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataType) => {
 
-    const Atendimento = sequelize.define("ATD_ATENDIMENTO", {
+    const Atendimento = sequelize.define("atd_atendimento", {
         atd_dthrInicio: {
             type: DataType.DATE,
             defaultValue: DataType.NOW,
@@ -17,19 +17,19 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Atendimento.belongsTo(models.TKC_TICKET, {
+                Atendimento.belongsTo(models.tkc_ticket, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Atendimento.belongsTo(models.USU_USUARIO, {
+                    Atendimento.belongsTo(models.usu_usuario, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Atendimento.belongsTo(models.STA_STATUS_ATENDIMENTO, {
+                    Atendimento.belongsTo(models.sta_status_atendimento, {
                         foreignKey: {
                             allowNull: false
                         }

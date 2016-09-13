@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    const StatusTicket = sequelize.define("STT_STATUS_TICKET", {
+    const StatusTicket = sequelize.define("stt_status_ticket", {
         stt_id: {
             type: DataType.INTEGER,
             primaryKey: true,
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                StatusTicket.hasMany(models.TKC_TICKET);
+                StatusTicket.hasMany(models.tkc_ticket);
             }
         }
     })

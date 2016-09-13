@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    const Perfil = sequelize.define("PER_PERFIL", {
+    const Perfil = sequelize.define("per_perfil", {
         per_id: {
             type: DataType.INTEGER,
             primaryKey: true,

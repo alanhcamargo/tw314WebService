@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    const Usuario = sequelize.define("USU_USUARIO", {
+    const Usuario = sequelize.define("usu_usuario", {
         usu_id: {
             type: DataType.INTEGER,
             primaryKey: true,
@@ -49,21 +49,21 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Usuario.belongsTo(models.EMP_EMPRESA, {
+                Usuario.belongsTo(models.emp_empresa, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Usuario.belongsTo(models.PER_PERFIL, {
+                    Usuario.belongsTo(models.per_perfil, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Usuario.hasMany(models.ATD_ATENDIMENTO);
-                    Usuario.hasMany(models.CHA_CHAMADO);
-                    Usuario.hasMany(models.COM_COMENTARIO);
+                    Usuario.hasMany(models.atd_atendimento);
+                    Usuario.hasMany(models.cha_chamado);
+                    Usuario.hasMany(models.com_comentario);
             }
         }
     })

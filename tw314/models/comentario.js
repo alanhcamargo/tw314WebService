@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    const Comentario = sequelize.define("COM_COMENTARIO", {
+    const Comentario = sequelize.define("com_comentario", {
         com_id: {
             type: DataType.INTEGER,
             primaryKey: true,
@@ -25,13 +25,13 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Comentario.belongsTo(models.CHA_CHAMADO, {
+                Comentario.belongsTo(models.cha_chamado, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Comentario.belongsTo(models.USU_USUARIO, {
+                    Comentario.belongsTo(models.usu_usuario, {
                         foreignKey: {
                             allowNull: false
                         }

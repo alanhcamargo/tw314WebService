@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataType) => {
 
-    const Ticket = sequelize.define("TKC_TICKET", {
+    const Ticket = sequelize.define("tkc_ticket", {
         tkc_nrTicket: {
             type: DataType.INTEGER,
             primaryKey: true
@@ -22,25 +22,25 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Ticket.belongsTo(models.EMP_EMPRESA, {
+                Ticket.belongsTo(models.emp_empresa, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Ticket.belongsTo(models.SVC_SERVICO, {
+                    Ticket.belongsTo(models.svc_servico, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Ticket.belongsTo(models.STT_STATUS_TICKET, {
+                    Ticket.belongsTo(models.stt_status_ticket, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Ticket.hasMany(models.ATD_ATENDIMENTO);
+                    Ticket.hasMany(models.atd_atendimento);
             }
         }
     })

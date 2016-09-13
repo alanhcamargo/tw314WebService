@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    const RamoAtividade = sequelize.define("RMA_RAMOATIVIDADE", {
+    const RamoAtividade = sequelize.define("rma_ramoatividade", {
         rma_id: {
             type: DataType.INTEGER,
             primaryKey: true,
@@ -24,8 +24,8 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                RamoAtividade.hasMany(models.SVC_SERVICO),
-                    RamoAtividade.hasMany(models.EMP_EMPRESA)
+                RamoAtividade.hasMany(models.svc_servico),
+                    RamoAtividade.hasMany(models.emp_empresa)
             }
         }
     })

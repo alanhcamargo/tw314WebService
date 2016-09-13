@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    const Empresa = sequelize.define("EMP_EMPRESA", {
+    const Empresa = sequelize.define("emp_empresa", {
         emp_id: {
             type: DataType.INTEGER,
             primaryKey: true,
@@ -146,9 +146,9 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: models => {
-                Empresa.belongsTo(models.RMA_RAMOATIVIDADE),
-                    Empresa.hasMany(models.ESV_RELACIONAMENTO_EMP_SVC),
-                    Empresa.hasMany(models.USU_USUARIO);
+                Empresa.belongsTo(models.rma_ramoatividade),
+                    Empresa.hasMany(models.esv_relacionamento_emp_svc),
+                    Empresa.hasMany(models.usu_usuario);
             }
         }
     })

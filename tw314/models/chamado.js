@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    const Chamado = sequelize.define("CHA_CHAMADO", {
+    const Chamado = sequelize.define("cha_chamado", {
         cha_id: {
             type: DataType.INTEGER,
             primaryKey: true,
@@ -41,18 +41,18 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Chamado.belongsTo(models.USU_USUARIO, {
+                Chamado.belongsTo(models.usu_usuario, {
                         foreignKey: {
                             allowNull: false
                         }
                     }),
-                    Chamado.belongsTo(models.STC_STATUS_CHAMADO, {
+                    Chamado.belongsTo(models.stc_status_chamado, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Chamado.hasMany(models.COM_COMENTARIO);
+                    Chamado.hasMany(models.com_comentario);
             }
         }
     })
