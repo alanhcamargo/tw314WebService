@@ -1,18 +1,18 @@
 module.exports = (sequelize, DataType) => {
 
-    const Ticket = sequelize.define("tkc_ticket", {
-        tkc_nrTicket: {
+    const Ticket = sequelize.define("ticket", {
+        numero_ticket: {
             type: DataType.INTEGER,
             primaryKey: true
         },
 
-        tkc_dthrEmissao: {
+        data_hora_emissao: {
             type: DataType.DATE,
             defaultValue: DataType.NOW,
             primaryKey: true
         },
 
-        tkc_cdAcesso: {
+        codigo_acesso: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
@@ -22,25 +22,25 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Ticket.belongsTo(models.emp_empresa, {
+                Ticket.belongsTo(models.empresa, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Ticket.belongsTo(models.svc_servico, {
+                    Ticket.belongsTo(models.servico, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Ticket.belongsTo(models.stt_status_ticket, {
+                    Ticket.belongsTo(models.status_ticket, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Ticket.hasMany(models.atd_atendimento);
+                    Ticket.hasMany(models.atendimento);
             }
         }
     })

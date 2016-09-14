@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const StatusAtendimento = sequelize.define("sta_status_atendimento", {
-        sta_id: {
+    const StatusAtendimento = sequelize.define("status_atendimento", {
+        id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        sta_nome: {
+        nome: {
             type: DataType.STRING(45),
             allowNull: false,
             validate: {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        sta_descricao: {
+        descricao: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                StatusAtendimento.hasMany(models.atd_atendimento, {
+                StatusAtendimento.hasMany(models.atendimento, {
                     foreignKey: {
                         allowNull: false
                     }

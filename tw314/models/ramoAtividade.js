@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const RamoAtividade = sequelize.define("rma_ramoatividade", {
-        rma_id: {
+    const RamoAtividade = sequelize.define("ramoatividade", {
+        id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        rma_nome: {
+        nome: {
             type: DataType.STRING(45),
             allowNull: false,
             validate: {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        rma_statusAtivacao: {
+        status_ativacao: {
             type: DataType.ENUM('Ativo', 'Inativo'),
             allowNull: false,
             validate: {
@@ -24,8 +24,8 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                RamoAtividade.hasMany(models.svc_servico),
-                    RamoAtividade.hasMany(models.emp_empresa)
+                RamoAtividade.hasMany(models.servico),
+                    RamoAtividade.hasMany(models.empresa)
             }
         }
     })

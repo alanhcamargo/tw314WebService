@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const Empresa = sequelize.define("emp_empresa", {
-        emp_id: {
+    const Empresa = sequelize.define("empresa", {
+        id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        emp_nomeFantasia: {
+        nome_fantasia: {
             type: DataType.STRING(80),
             allowNull: false,
             validate: {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_razaoSocial: {
+        raza_social: {
             type: DataType.STRING(80),
             allowNull: false,
             validate: {
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_nrCnpj: {
+        numero_cnpj: {
             type: DataType.STRING(14),
             allowNull: false,
             validate: {
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_logradouro: {
+        logradouro: {
             type: DataType.STRING(255),
             allowNull: false,
             validate: {
@@ -38,7 +38,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_nrLogradouro: {
+        numero_logradouro: {
             type: DataType.STRING(255),
             allowNull: false,
             validate: {
@@ -46,7 +46,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_cidade: {
+        cidade: {
             type: DataType.STRING(100),
             allowNull: false,
             validate: {
@@ -54,7 +54,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_uf: {
+        uf: {
             type: DataType.STRING(2),
             allowNull: false,
             validate: {
@@ -62,7 +62,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_cep: {
+        cep: {
             type: DataType.STRING(8),
             allowNull: false,
             validate: {
@@ -70,7 +70,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_pais: {
+        pais: {
             type: DataType.STRING(100),
             allowNull: false,
             validate: {
@@ -78,11 +78,11 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_telefone: {
+        telefone: {
             type: DataType.STRING(11)
         },
 
-        emp_email: {
+        email: {
             type: DataType.STRING(100),
             allowNull: false,
             validate: {
@@ -90,7 +90,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_nomeResponsavel: {
+        nome_responsavel: {
             type: DataType.STRING(80),
             allowNull: false,
             validate: {
@@ -98,7 +98,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_cargoResponsavel: {
+        cargo_responsavel: {
             type: DataType.STRING(45),
             allowNull: false,
             validate: {
@@ -106,7 +106,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_cpfResponsavel: {
+        cpf_responsavel: {
             type: DataType.STRING(11),
             allowNull: false,
             validate: {
@@ -114,7 +114,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_dtAbertura: {
+        data_abertura: {
             type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
@@ -123,7 +123,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_dtAtivacao: {
+        data_ativacao: {
             type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
@@ -132,11 +132,11 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        emp_dtInativacao: {
+        data_inativacao: {
             type: DataType.DATE
         },
 
-        emp_statusAtivacao: {
+        status_ativacao: {
             type: DataType.ENUM('Ativo', 'Inativo'),
             allowNull: false,
             validate: {
@@ -146,9 +146,9 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: models => {
-                Empresa.belongsTo(models.rma_ramoatividade),
-                    Empresa.hasMany(models.esv_relacionamento_emp_svc),
-                    Empresa.hasMany(models.usu_usuario);
+                Empresa.belongsTo(models.ramoatividade),
+                    Empresa.hasMany(models.relacionamento_svc),
+                    Empresa.hasMany(models.usuario);
             }
         }
     })

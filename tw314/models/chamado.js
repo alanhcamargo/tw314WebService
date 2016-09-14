@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const Chamado = sequelize.define("cha_chamado", {
-        cha_id: {
+    const Chamado = sequelize.define("chamado", {
+        id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        cha_dtabertura: {
+        data_abertura: {
             type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        cha_assunto: {
+        assunto: {
             type: DataType.STRING(100),
             allowNull: false,
             validate: {
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        cha_mensagem: {
+        mensagem: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        cha_anexo: {
+        anexo: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
@@ -41,18 +41,18 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Chamado.belongsTo(models.usu_usuario, {
+                Chamado.belongsTo(models.usuario, {
                         foreignKey: {
                             allowNull: false
                         }
                     }),
-                    Chamado.belongsTo(models.stc_status_chamado, {
+                    Chamado.belongsTo(models.status_chamado, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Chamado.hasMany(models.com_comentario);
+                    Chamado.hasMany(models.comentario);
             }
         }
     })

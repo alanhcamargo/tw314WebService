@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const Servico = sequelize.define("svc_servico", {
-        svc_id: {
+    const Servico = sequelize.define("servico", {
+        id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        svc_nome: {
+        nome: {
             type: DataType.STRING(45),
             allowNull: false,
             validate: {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        svc_descricao: {
+        descricao: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        svc_sigla: {
+        sigla: {
             type: DataType.STRING(2),
             allowNull: false,
             validate: {
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        svc_statusAtivacao: {
+        status_ativacao: {
             type: DataType.ENUM('Ativo', 'Inativo'),
             allowNull: false,
             validate: {
@@ -40,8 +40,8 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Servico.belongsTo(models.rma_ramoatividade),
-                Servico.hasMany(models.esv_relacionamento_emp_svc);
+                Servico.belongsTo(models.ramoatividade),
+                Servico.hasMany(models.relacionamento_emp_svc);
             }
         }
     })

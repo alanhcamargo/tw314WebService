@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const StatusTicket = sequelize.define("stt_status_ticket", {
-        stt_id: {
+    const StatusTicket = sequelize.define("status_ticket", {
+        id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        stt_nome: {
+        nome: {
             type: DataType.STRING(45),
             allowNull: false,
             validate: {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        stt_descricao: {
+        descricao: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                StatusTicket.hasMany(models.tkc_ticket);
+                StatusTicket.hasMany(models.ticket);
             }
         }
     })

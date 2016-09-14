@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataType) => {
 
-    const Atendimento = sequelize.define("atd_atendimento", {
-        atd_dthrInicio: {
+    const Atendimento = sequelize.define("atendimento", {
+        data_hora_inicio: {
             type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
@@ -10,31 +10,31 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        atd_dthrFim: {
+        data_hora_fim: {
             type: DataType.DATE
         }
 
     }, {
         classMethods: {
             associate: (models) => {
-                Atendimento.belongsTo(models.tkc_ticket, {
-                        foreignKey: {
-                            allowNull: false
-                        }
-                        //onDelete: 'CASCADE'
-                    }),
-                    Atendimento.belongsTo(models.usu_usuario, {
-                        foreignKey: {
-                            allowNull: false
-                        }
-                        //onDelete: 'CASCADE'
-                    }),
-                    Atendimento.belongsTo(models.sta_status_atendimento, {
-                        foreignKey: {
-                            allowNull: false
-                        }
-                        //onDelete: 'CASCADE'
-                    });
+                Atendimento.belongsTo(models.ticket, {
+                    foreignKey: {
+                        allowNull: false
+                    }
+                    //onDelete: 'CASCADE'
+                });
+                Atendimento.belongsTo(models.usuario, {
+                    foreignKey: {
+                        allowNull: false
+                    }
+                    //onDelete: 'CASCADE'
+                });
+                Atendimento.belongsTo(models.status_atendimento, {
+                    foreignKey: {
+                        allowNull: false
+                    }
+                    //onDelete: 'CASCADE'
+                });
             }
         }
     })

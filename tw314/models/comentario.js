@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const Comentario = sequelize.define("com_comentario", {
-        com_id: {
+    const Comentario = sequelize.define("comentario", {
+        id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        com_dtcomentario: {
+        data_comentario: {
             type: DataType.DATE,
             defaultValue: DataType.NOW,
             allowNull: false,
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        com_mensagem: {
+        mensagem: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
@@ -25,13 +25,13 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Comentario.belongsTo(models.cha_chamado, {
+                Comentario.belongsTo(models.chamado, {
                         foreignKey: {
                             allowNull: false
                         }
                         //onDelete: 'CASCADE'
                     }),
-                    Comentario.belongsTo(models.usu_usuario, {
+                    Comentario.belongsTo(models.usuario, {
                         foreignKey: {
                             allowNull: false
                         }

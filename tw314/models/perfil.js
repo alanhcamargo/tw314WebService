@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataType) => {
-    const Perfil = sequelize.define("per_perfil", {
-        per_id: {
+    const Perfil = sequelize.define("perfil", {
+        id: {
             type: DataType.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
 
-        per_nome: {
+        nome: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        per_descricao: {
+        descricao: {
             type: DataType.STRING,
             allowNull: false,
             validate: {
