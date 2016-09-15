@@ -11,17 +11,17 @@ module.exports = (sequelize, DataType) => {
         classMethods: {
             associate: (models) => {
                 RelacionamentoEmpresaServico.belongsTo(models.servico, {
-                        foreignKey: {
-                            allowNull: false
-                        }
-                        //onDelete: 'CASCADE'
-                    }),
-                    RelacionamentoEmpresaServico.belongsTo(models.empresa, {
-                        foreignKey: {
-                            allowNull: false
-                        }
-                        //onDelete: 'CASCADE'
-                    });
+                    foreignKey: {
+                        allowNull: false
+                    }
+                    //onDelete: 'CASCADE'
+                });
+                RelacionamentoEmpresaServico.belongsTo(models.empresa, {
+                    foreignKey: {
+                        allowNull: false
+                    }
+                    //onDelete: 'CASCADE'
+                });
             }
         }
     })

@@ -40,7 +40,12 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Servico.belongsTo(models.ramoatividade),
+                Servico.belongsTo(models.ramo_atividade, {
+                    foreignKey: {
+                        allowNull: false
+                    }
+                    //onDelete: 'CASCADE'
+                });
                 Servico.hasMany(models.relacionamento_emp_svc);
             }
         }

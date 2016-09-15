@@ -146,9 +146,14 @@ module.exports = (sequelize, DataType) => {
     }, {
         classMethods: {
             associate: models => {
-                Empresa.belongsTo(models.ramoatividade),
-                    Empresa.hasMany(models.relacionamento_svc),
-                    Empresa.hasMany(models.usuario);
+                Empresa.belongsTo(models.ramo_atividade, {
+                    foreignKey: {
+                        allowNull: false
+                    }
+                    //onDelete: 'CASCADE'
+                });
+                Empresa.hasMany(models.relacionamento_emp_svc);
+                Empresa.hasMany(models.usuario);
             }
         }
     })

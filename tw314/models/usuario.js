@@ -50,20 +50,20 @@ module.exports = (sequelize, DataType) => {
         classMethods: {
             associate: (models) => {
                 Usuario.belongsTo(models.empresa, {
-                        foreignKey: {
-                            allowNull: false
-                        }
-                        //onDelete: 'CASCADE'
-                    }),
-                    Usuario.belongsTo(models.perfil, {
-                        foreignKey: {
-                            allowNull: false
-                        }
-                        //onDelete: 'CASCADE'
-                    }),
-                    Usuario.hasMany(models.atendimento);
-                    Usuario.hasMany(models.chamado);
-                    Usuario.hasMany(models.comentario);
+                    foreignKey: {
+                        allowNull: false
+                    }
+                    //onDelete: 'CASCADE'
+                });
+                Usuario.belongsTo(models.perfil, {
+                    foreignKey: {
+                        allowNull: false
+                    }
+                    //onDelete: 'CASCADE'
+                });
+                Usuario.hasMany(models.atendimento);
+                Usuario.hasMany(models.chamado);
+                Usuario.hasMany(models.comentario);
             }
         }
     })

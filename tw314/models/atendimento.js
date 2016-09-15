@@ -1,6 +1,13 @@
 module.exports = (sequelize, DataType) => {
 
     const Atendimento = sequelize.define("atendimento", {
+
+        id: {
+            type: DataType.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+
         data_hora_inicio: {
             type: DataType.DATE,
             defaultValue: DataType.NOW,
@@ -37,6 +44,6 @@ module.exports = (sequelize, DataType) => {
                 });
             }
         }
-    })
+    });
     return Atendimento;
 }
