@@ -27,6 +27,6 @@ module.exports = (sequelize, DataType) => {
                 Perfil.hasMany(models.usuario);
             }
         }
-    })
+    });
     return Perfil;
 }
