@@ -14,7 +14,7 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
-        raza_social: {
+        razao_social: {
             type: DataType.STRING(80),
             allowNull: false,
             validate: {
@@ -152,7 +152,7 @@ module.exports = (sequelize, DataType) => {
                     }
                     //onDelete: 'CASCADE'
                 });
-                Empresa.hasMany(models.relacionamento_emp_svc);
+                Empresa.belongsToMany(models.servico, { through: models.relacionamento_emp_svc });
                 Empresa.hasMany(models.usuario);
             }
         }

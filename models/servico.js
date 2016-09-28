@@ -46,7 +46,7 @@ module.exports = (sequelize, DataType) => {
                     }
                     //onDelete: 'CASCADE'
                 });
-                Servico.hasMany(models.relacionamento_emp_svc);
+                Servico.belongsToMany(models.empresa, { through: models.relacionamento_emp_svc });
             }
         }
     })

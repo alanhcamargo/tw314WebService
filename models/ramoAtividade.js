@@ -14,6 +14,14 @@ module.exports = (sequelize, DataType) => {
             }
         },
 
+        descricao: {
+          type: DataType.STRING,
+          allowNull: false,
+          validate: {
+              notEmpty: true
+          }
+        },
+
         status_ativacao: {
             type: DataType.ENUM('Ativo', 'Inativo'),
             allowNull: false,
